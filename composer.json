@@ -1,0 +1,15 @@
+{
+    "name": "kwible/bootstrap",
+    "description": "The bootstrap for the Flyer Framework",
+    "require": {
+        "kwible/foundation": "dev-master",
+        "filp/whoops": "dev-master"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kwible",
+            "email": "kwibleframework@hotmail.com"
+        }
+    ]
+}
