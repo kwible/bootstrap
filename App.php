@@ -76,6 +76,21 @@ class App
 		$this->booted = true;
 	}
 
+	public function shutdown()
+	{
+		if (Events::exists('application.route'))
+		{
+			echo Events::trigger('application.route');
+		} else {
+			echo $this->triggerErrorPage('404');
+		}
+	}
+
+	public function triggerErrorPage($error)
+	{
+		return Events::trigger('application.error.' . $error);
+	}
+
 	/**
 	 * Removes all providers out of the pending boot payload
 	 *

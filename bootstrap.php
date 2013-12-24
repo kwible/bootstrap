@@ -61,6 +61,17 @@ Events::create(array(
 ));
 
 /**
+ * Setting up the default error page
+ */
+
+Events::create(array(
+	'title' => 'application.error.404',
+	'event' => function () {
+		return '<h2>Er is een fout opgetreden!</h2><p>De pagina waarop je gezocht op hebt, is helaas niet (meer) beschrikaar';
+	}
+));
+
+/**
  * Creating all aliases for the original classes, they are specified in the config array
  */
 
@@ -78,6 +89,7 @@ foreach (Registry::get('config')['serviceProviders'] as $serviceProvider)
 	$app->register(new $serviceProvider);
 }
 
+require(APP . 'routes.php');
 
 /**
  * Boot the application
@@ -85,4 +97,8 @@ foreach (Registry::get('config')['serviceProviders'] as $serviceProvider)
 
 $app->boot();
 
-Registry::get('dfdf');
+/**
+ * Shutdown the application
+ */
+
+$app->shutdown();
